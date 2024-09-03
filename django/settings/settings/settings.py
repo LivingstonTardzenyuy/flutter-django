@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth',
+    'rest_auth',
     'dj_rest_auth.registration',
+    
+    
+    'drf_yasg',
     
     # allauth
     'allauth',
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     
     # local
     'core',
+    'accounts',
 ]
 
 
@@ -61,6 +65,7 @@ AUTH_USER_MODEL = 'core.User'
 
 MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,3 +160,9 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}

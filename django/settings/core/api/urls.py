@@ -5,5 +5,4 @@ from .views import aPage
 
 urlpatterns = [
     path('', aPage),
-    
 ]
