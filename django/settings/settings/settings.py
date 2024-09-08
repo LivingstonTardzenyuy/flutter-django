@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # local
     'core',
     'accounts',
+    'book',
 ]
 
 
@@ -74,6 +75,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+
 
 ROOT_URLCONF = 'settings.urls'
 
@@ -155,6 +159,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
+# AUTHENTICATION_BACKENDS = ["core.models.EmailBackend"]
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

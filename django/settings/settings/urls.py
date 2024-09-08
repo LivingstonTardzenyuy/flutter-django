@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('core.api.urls')),
     path('accounts/', include('accounts.api.urls')),   
-    
+    path('book/', include('book.api.urls')),
     
     
     # Include DRF-Swagger and Redoc URLs
