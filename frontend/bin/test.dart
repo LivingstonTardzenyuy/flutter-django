@@ -1,56 +1,13 @@
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-main() async{
-  // var response = await http.get(Uri.parse('http://127.0.0.1:8001/core/'));
-  // var response = await http.post(Uri.parse('http://127.0.0.1:8001/core/'),
-  //                                   headers: <String, String>{
-  //                                     'Content-Type': 'application/x-www-form-urlencoded',
-  //                                   },
-  //                                   body: <String, String>{
-  //                                     "username":"Kongnyuy",
-  //                                     "email":"kong@gmail.com",
-  //                                     "password":"TypeScript01@",
-  //                                   });
-  //
-  // print(jsonDecode(response.body));
-  AuthServices authServices = AuthServices();
-  // RegistrationResponse? responseBody = await authServices.registration("Livings2ton", "emai2l@gmail.com", "password01@", "password01@");
-  var  responseLogin = await authServices.login("Livings2ton", "password01@");
-  print(responseLogin);
-  // if (responseBody != null){
-  //   if (responseBody.email != null){
-  //     responseBody.email!.forEach((e) => print(e));
-  // }
-  //
-  // if (responseBody.username != null){
-  // responseBody.username!.forEach((e) => print(e));
-  // }
-  //
-  //
-  // if (responseBody.non_fields_errors != null){
-  // responseBody.non_fields_errors!.forEach((e) => print(e));
-  // }
-  //
-  //
-  // if (responseBody.password1 != null){
-  // responseBody.password1!.forEach((e) => print(e));
-  // }
-  //
-  //
-  // if (responseBody.key != null){
-  //   print(responseBody.key);
-  // }
-  // }
-
-   var response = await http.get(Uri.parse("http://127.0.0.1:8000/accounts/auth/user/"),
-                                      headers: {
-                                        "Authorization": "Token 7f1c120ab77a3a0820979b248907c66dbce07ece"
-                                        },
-                                      );
-   print(response.body);
+void main() async {
+  BookService bookService = BookService();
+  await bookService.fetchBooks();
 }
+
+
 
 
 class AuthServices{
@@ -69,7 +26,7 @@ class AuthServices{
       print(response.body);
       return RegistrationResponse.fromJson(jsonDecode(response.body));
     } else{
-      print('Error: ${response.statusCode}');
+      print('Error sending for auth: ${response.statusCode}');
       print('Response body: ${response.body}');
       return null;
     }
@@ -88,7 +45,7 @@ class AuthServices{
       if (response.statusCode == 200){
         return response.body;
       }  else{
-        print('Error: ${response.statusCode}');
+        print('Error sending for login: ${response.statusCode}');
         print('Response body: ${response.body}');
         return null;
       }
@@ -99,6 +56,9 @@ class AuthServices{
     }
 
 }
+
+
+
 
 
 class RegistrationResponse{
