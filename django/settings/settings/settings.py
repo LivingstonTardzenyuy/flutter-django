@@ -25,7 +25,13 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.1.109',
+    '127.0.0.1',
+    'localhost',
+    '10.0.2.2',
+    '0.0.0.0'
+    ]  # Add your emulator's IP address
 
 
 # Application definition

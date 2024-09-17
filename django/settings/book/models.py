@@ -26,5 +26,5 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, related_name='book_publisher', on_delete=models.PROTECT, null=True)
     
     
-    de __str__(self):
+    def __str__(self):
         return self.name
