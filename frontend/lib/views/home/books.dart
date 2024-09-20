@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../main.dart';
+import 'authentication/login.dart';
+import 'authentication/signup.dart';
 import 'books_list.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -33,11 +35,15 @@ class _MyHomePageState extends State<MyHomePage> {
               child: OutlinedButton(
                   style: OutlinedButton.styleFrom(),
                   onPressed: (){},
-                  child: Text(
-                    'Sign Up',
+                  child: TextButton(
+                    onPressed: (){
+                      Get.to(() => const SignUpPage());
+                    },
+                    child: Text('Sign Up',
                     style: TextStyle(
 
                     ),
+                  )
                   )),
             ),
           ],
