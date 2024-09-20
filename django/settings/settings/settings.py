@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
     'dj_rest_auth.registration',
     
     
@@ -62,7 +61,6 @@ INSTALLED_APPS = [
     
     # local
     'core',
-    'accounts',
     'book',
 ]
 
@@ -176,4 +174,20 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
+}
+
+
+# REST_AUTH_SERIALIZERS = {
+#     "REGISTER_SERIALIZER": "core.api.serializers.NewRegisterSerializer",
+#     "LOGIN_SERIALIZER": "core.api.serializers.NewLoginSerializer",
+# }
+
+
+# REST_AUTH_SERIALIZERS = {
+#     "LOGIN_SERIALIZER": "core.api.serializers.NewLoginSerializer",
+#     # "REGISTER_SERIALIZER": "core.api.serializers.NewRegistrationSerializer",
+# }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'core.api.serializers.NewRegisterSerializer',  # Path to your custom serializer
 }
