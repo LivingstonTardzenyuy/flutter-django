@@ -10,6 +10,9 @@ class NewRegisterSerializer(RegisterSerializer):
     last_name = serializers.CharField(required=True)
     nickname = serializers.CharField(required=False)
 
+    def validate_email(self, email):
+        if User.objects.filter(email = email).exist():
+            raise serializers.ValidationError("Email already exists")
     def save(self, request):
         user = super().save(request)
         user.first_name = self.validated_data.get('first_name', '')

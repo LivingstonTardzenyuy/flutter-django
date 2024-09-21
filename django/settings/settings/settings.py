@@ -23,14 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# DEBUG = True
+DEBUG = False
+gi
 ALLOWED_HOSTS = [
     '192.168.1.109',
     '127.0.0.1',
     'localhost',
     '10.0.2.2',
-    '0.0.0.0'
+    '0.0.0.0',
+    
+    '192.168.1.122'
+    
     ]  # Add your emulator's IP address
 
 
@@ -173,6 +177,7 @@ AUTHENTICATION_BACKENDS = (
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
 }
 
@@ -187,6 +192,17 @@ REST_FRAMEWORK = {
 #     "LOGIN_SERIALIZER": "core.api.serializers.NewLoginSerializer",
 #     # "REGISTER_SERIALIZER": "core.api.serializers.NewRegistrationSerializer",
 # }
+
+
+ACCOUNT_AUTHENTIFICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+aCCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME = 'email'
+USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION_REQUIRED = None
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_USER_MODEL_USERNAME = None
 
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'core.api.serializers.NewRegisterSerializer',  # Path to your custom serializer
